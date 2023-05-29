@@ -38,5 +38,6 @@ def process_json_files(directory, num_processes=4):
         )
 
 
-# Usage
-process_json_files("./json/extracted-papers/", num_processes=8)
+if __name__ == "__main__":
+    # Usage
+    process_json_files("./json/extracted-papers/", num_processes=8)

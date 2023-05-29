@@ -9,7 +9,7 @@
 			"type": "python",
 			"request": "launch",
 			"cwd": "${workspaceFolder}/natural-language-processing/gpt-text-extractor",
-			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/survey.py",
+			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/tools/survey.py",
 			"python": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/.venv/bin/python",
 			"console": "integratedTerminal",
 			"justMyCode": true
@@ -19,7 +19,17 @@
 			"type": "python",
 			"request": "launch",
 			"cwd": "${workspaceFolder}/natural-language-processing/gpt-text-extractor",
-			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/extractor.py",
+			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/tools/extractor.py",
+			"python": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/.venv/bin/python",
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
+			"name": "gpt-text-extractor/preprocess-papers",
+			"type": "python",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/natural-language-processing/gpt-text-extractor",
+			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/tools/preprocess.py",
 			"python": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/.venv/bin/python",
 			"console": "integratedTerminal",
 			"justMyCode": true
