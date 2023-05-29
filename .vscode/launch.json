@@ -34,5 +34,15 @@
 			"console": "integratedTerminal",
 			"justMyCode": true
 		}
+		{
+			"name": "gpt-text-extractor/calculate-cost",
+			"type": "python",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/natural-language-processing/gpt-text-extractor",
+			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/tools/cost.py",
+			"python": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/.venv/bin/python",
+			"console": "integratedTerminal",
+			"justMyCode": true
+		}
 	]
 }

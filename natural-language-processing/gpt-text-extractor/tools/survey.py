@@ -3,6 +3,10 @@ import json
 
 
 def read_xlsx_and_save_as_json(filename):
+    if os.path.exists("./json/all_survey_papers.json"):
+        print("File all_survey_papers.json already exists.")
+        return
+
     workbook = openpyxl.load_workbook(filename)
     data = {}
 

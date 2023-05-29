@@ -11,6 +11,8 @@ python = "^3.9"
 openpyxl = "^3.1.2"
 openai = "^0.27.7"
 pdfplumber = "^0.9.0"
+transformers = "^4.29.2"
+python-dotenv = "^1.0.0"
 
 
 [build-system]
