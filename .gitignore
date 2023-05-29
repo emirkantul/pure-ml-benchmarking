@@ -3,6 +3,8 @@
 paper-dataset/*.pdf
 paper-dataset/SiGe/*.pdf
 paper-dataset.zip
+natural-language-processing/gpt-text-extractor/json/*.json
+natural-language-processing/gpt-text-extractor/json/extracted-papers/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

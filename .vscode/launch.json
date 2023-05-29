@@ -13,6 +13,16 @@
 			"python": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/.venv/bin/python",
 			"console": "integratedTerminal",
 			"justMyCode": true
+		},
+		{
+			"name": "gpt-text-extractor/extract-papers",
+			"type": "python",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/natural-language-processing/gpt-text-extractor",
+			"program": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/extractor.py",
+			"python": "${workspaceFolder}/natural-language-processing/gpt-text-extractor/.venv/bin/python",
+			"console": "integratedTerminal",
+			"justMyCode": true
 		}
 	]
 }
