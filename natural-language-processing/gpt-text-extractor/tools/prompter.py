@@ -105,7 +105,7 @@ def make_prompt(title, content):
 def get_results_from_chat_gpt(title, content):
     prompt = "".join(make_prompt(title, content))
 
-    print(f"PROMPT: {prompt}")
+    print(f"PROMPT: {prompt}\n")
 
     response = openai.ChatCompletion.create(
         model=MODEL_NAME,
@@ -124,7 +124,7 @@ def get_results_from_chat_gpt(title, content):
     )
 
     result = response["choices"][0]["message"]["content"]
-    print(f"RESPONSE: {result}")
+    print(f"RESPONSE: {result}\n")
 
     # Split the response into separate parts for each attribute
     attributes = result.split("\n")
@@ -162,9 +162,7 @@ def write_results_to_json(directory, output_file):
                 data = json.load(json_file)
 
             # Apply the get_results_from_chat_gpt function
-            results = get_results_from_chat_gpt(
-                data["Paper Title"], data["Abstract"]
-            )
+            results = get_results_from_chat_gpt(data["title"], data["content"])
 
             # Add the results to the dictionary
             all_results[file_name] = results
