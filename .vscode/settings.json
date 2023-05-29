@@ -1,0 +1,11 @@
+{
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter"
+	},
+	"python.formatting.provider": "black",
+	"black-formatter.args": [
+		"--line-length",
+		"79",
+		"--experimental-string-processing"
+	]
+}
