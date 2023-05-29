@@ -1,3 +1,9 @@
+# User defined
+.DS_Store
+paper-dataset/*.pdf
+paper-dataset/SiGe/*.pdf
+paper-dataset.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
