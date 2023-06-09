@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import time
 import json
 
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -14,7 +13,6 @@ if openai_api_key is None:
     raise ValueError("OPENAI_API_KEY environment variable not set")
 
 openai.api_key = openai_api_key
-
 
 MODEL_NAME = "gpt-3.5-turbo"
 
@@ -101,27 +99,34 @@ def make_prompt(title, content):
     )
 
 
+def truncate_content(content):
+    return content[: len(content) // 2]
+
+
 @handle_rate_limit
 def get_results_from_chat_gpt(title, content):
-    prompt = "".join(make_prompt(title, content))
-
-    print(f"PROMPT: {prompt}\n")
-
-    response = openai.ChatCompletion.create(
-        model=MODEL_NAME,
-        temperature=0.1,
-        n=1,
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "You are a Power Amplifier expert who is trying to fill"
-                    " the needed information for a given paper."
-                ),
-            },
-            {"role": "user", "content": prompt},
-        ],
-    )
+    try:
+        prompt = make_prompt(title, content)
+        response = openai.ChatCompletion.create(
+            model=MODEL_NAME,
+            temperature=0.1,
+            n=1,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a Power Amplifier expert who is trying to"
+                        " fill the needed information for a given paper."
+                    ),
+                },
+                {"role": "user", "content": prompt},
+            ],
+        )
+    except openai.error.InvalidRequestError:
+        return get_results_from_chat_gpt(title, truncate_content(content))
+    except Exception as e:
+        print(f"ERROR: {e}")
+        return None
 
     result = response["choices"][0]["message"]["content"]
     print(f"RESPONSE: {result}\n")
@@ -133,9 +138,8 @@ def get_results_from_chat_gpt(title, content):
         if ": " in attribute:
             key, val = attribute.split(":", 1)
             attributes_dict[key.strip()] = val.strip()
-    return attributes_dict
 
-    return result
+    return attributes_dict
 
 
 def write_results_to_json(directory, output_file):
@@ -163,6 +167,10 @@ def write_results_to_json(directory, output_file):
 
             # Apply the get_results_from_chat_gpt function
             results = get_results_from_chat_gpt(data["title"], data["content"])
+
+            if results is None:
+                print(f"ERROR: No results for {file_name}")
+                continue
 
             # Add the results to the dictionary
             all_results[file_name] = results
